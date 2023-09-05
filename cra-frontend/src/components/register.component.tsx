@@ -37,9 +37,10 @@ export function Register({proofObj, userAddr}: {proofObj: Proof, userAddr: strin
         address: GCoinAddress,
         abi: contractABI,
         functionName: 'verifyProofAndRegisterMember',
-        args: [proofObj.epoch, proofObj.provider, proofObj.parameters, proofObj.context, claimData, proofObj.signatures, identity?.commitment],
+        args: [proofObj.epoch, proofObj.provider, proofObj.parameters, proofObj.context, claimData, proofObj.signatures, Number(identity?.commitment)],
         chainId: 420,
         onSuccess(data) {
+            console.log(identity);
             console.log('Successful - register prepare: ', data);
             setIsPrepared(true);
         },
