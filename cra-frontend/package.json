@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@reclaimprotocol/reclaim-sdk": "^4.8.4",
+    "@reclaimprotocol/reclaim-sdk": "4.8.4",
     "@semaphore-protocol/data": "^3.11.0",
     "@semaphore-protocol/group": "^3.11.0",
     "@semaphore-protocol/identity": "^3.11.0",
