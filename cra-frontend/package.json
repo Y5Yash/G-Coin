@@ -1,0 +1,70 @@
+{
+  "name": "cra-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reclaimprotocol/reclaim-sdk": "^4.8.4",
+    "@semaphore-protocol/data": "^3.11.0",
+    "@semaphore-protocol/group": "^3.11.0",
+    "@semaphore-protocol/identity": "^3.11.0",
+    "@semaphore-protocol/proof": "^3.11.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "ethers": "^6.7.1",
+    "os": "^0.1.2",
+    "path-browserify": "^1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-qr-code": "^2.0.12",
+    "react-scripts": "5.0.1",
+    "viem": "^1.10.3",
+    "wagmi": "^1.4.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.48",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "assert": "^2.0.0",
+    "browserify": "^17.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "typescript": "^5.0.4",
+    "url": "^0.11.1"
+  },
+  "overrides": {
+    "typescript": "^5.0.4"
+  }
+}
