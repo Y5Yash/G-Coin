@@ -47,6 +47,13 @@ function App() {
     }
   });
 
+  useEffect(() => {
+    if (isConnected && !started) {
+      console.log('Disconnecting from ', connector?.name);
+      disconnect();
+    }
+  }, []);
+
   const fetchProof = async () => {
     if (isLoadingTemplate)  {
       console.log('Template is still loading.');

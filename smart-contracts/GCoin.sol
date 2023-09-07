@@ -48,12 +48,13 @@ interface ReclaimContractInterface {
     function assertValidEpochAndSignedClaim(uint32 epochNum, ClaimInfo memory claimInfo, CompleteClaimData memory claimData, bytes[] memory signatures) external view;
 }
 
-contract GCoin is ERC20 {
+contract C_GCoin is ERC20 {
     address public owner;
     address public semaphoreAddress;
     address public reclaimContractAddress;
     uint256 public groupId;
     uint256 public merkleTreeDepth;
+
     // mapping (bytes32 => bool) public registeredList;
     mapping (bytes32 => uint8) public registeredList;   // comment this line and uncomment above line on prod version
 
@@ -94,16 +95,18 @@ contract GCoin is ERC20 {
     }
 
     function airDropTo(
-        address receiver,
         uint256 _merkleTreeRoot,
         uint256 _signal,
         uint256 _nullifierHash,
         uint256 _externalNullifier,
         uint256[8] calldata _proof
         ) external {
-        // require(msg.sender == owner, "Only the owner can authorize an airdrop.");
-        require(_signal == 0, "The signal is required to be 0");
+
         require(_externalNullifier == 100, "The external nullifier is required to be 100.");
+
+        // use signal to represent the airdrop. This is used in place of contextAddress to avoid doxxing and frontrunning.
+        address receiver = address(uint160(_signal));
+
         SemaphoreInterface(semaphoreAddress).verifyProof(groupId, _merkleTreeRoot, _signal, _nullifierHash, _externalNullifier, _proof);
         _mint(receiver, 100 * (10 ** decimals()));
     }

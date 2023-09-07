@@ -20,7 +20,7 @@ export function Register({proofObj, userAddr}: {proofObj: Proof, userAddr: strin
     }, [identity]);
 
 
-    const GCoinAddress = '0x74a9023CE8bafD2369E53Ba9a6c7C13915BCD3Df';
+    const GCoinAddress = '0xe74DdeAC3a394FAf9D37110DAd1Fc405D888252d';
 
     const claimData = {
         identifier: proofObj.identifier,
@@ -80,7 +80,7 @@ export function Register({proofObj, userAddr}: {proofObj: Proof, userAddr: strin
                 //     <div>Transaction Hash: {contractWrite.data?.hash}</div><br/>
                 //     <div>Import G-Coins from: {GCoinAddress}</div>
                 // </div>
-                <Airdrop identity={identity!} userAddr={userAddr} shouldRender = {contractWrite.isSuccess}/>
+                <Airdrop identity={identity!} userAddrSignal={userAddr} shouldRender = {contractWrite.isSuccess}/>
             }
         </>
     )

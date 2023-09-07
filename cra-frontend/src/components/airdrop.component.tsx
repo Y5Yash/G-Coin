@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
 import contractABI from '../assets/gcoinABI.json';
 
-export function Airdrop({identity, userAddr, shouldRender}: {identity: Identity, userAddr: string, shouldRender: boolean}) {
+export function Airdrop({identity, userAddrSignal, shouldRender}: {identity: Identity, userAddrSignal: string, shouldRender: boolean}) {
 
     const [isFullProof, setIsFullProof] = useState(false);
     const [semaphoreProof, setSemaphoreProof] = useState<FullProof>();
 
-    const GCoinAddress = '0x74a9023CE8bafD2369E53Ba9a6c7C13915BCD3Df';
+    const GCoinAddress = '0xe74DdeAC3a394FAf9D37110DAd1Fc405D888252d';
     const semaphoreAddress = "0x3889927F0B5Eb1a02C6E2C20b39a1Bd4EAd76131";
-    const groupNo = 1002;
+    const groupNo = 1004;
     const merkleTreeDepth = 16;
     const externalNullifier = "100";
-    const signal = 0;
+    // const signal = 0;
 
     useEffect(() => {
         console.log("Should render: ", shouldRender);
@@ -33,15 +33,15 @@ export function Airdrop({identity, userAddr, shouldRender}: {identity: Identity,
                 console.log("The members are: ", members);
                 const group = new Group(groupNo, merkleTreeDepth, members);
                 console.log("The group is: ", group);
-                console.log("args for generate proof: ", identity, group, externalNullifier, signal, { zkeyFilePath: "../assets/semaphore.zkey", wasmFilePath: "../assets/semaphore.wasm" });
+                // console.log("args for generate proof: ", identity, group, externalNullifier, userAddrSignal, { zkeyFilePath: "../assets/semaphore.zkey", wasmFilePath: "../assets/semaphore.wasm" });
                 console.log("identity: ", identity);
                 console.log("group: ", group);
                 console.log("externalNullifier: ", externalNullifier);
-                console.log("signal: ", signal);
-                console.log("zkeyFilePath: ", "../assets/semaphore.zkey");
-                console.log("wasmFilePath: ", "../assets/semaphore.wasm");
+                // console.log("signal: ", signal);
+                // console.log("zkeyFilePath: ", "../assets/semaphore.zkey");
+                // console.log("wasmFilePath: ", "../assets/semaphore.wasm");
 
-                const fullProof = await generateProof(identity, group, externalNullifier, signal, );
+                const fullProof = await generateProof(identity, group, externalNullifier, userAddrSignal );
                 console.log("The full semaphore proof is: ", fullProof);
                 setSemaphoreProof(fullProof);
                 setIsFullProof(true);
@@ -59,7 +59,7 @@ export function Airdrop({identity, userAddr, shouldRender}: {identity: Identity,
         address: GCoinAddress,
         abi: contractABI,
         functionName: 'airDropTo',
-        args: [userAddr, semaphoreProof?.merkleTreeRoot, semaphoreProof?.signal, semaphoreProof?.nullifierHash, semaphoreProof?.externalNullifier, semaphoreProof?.proof],
+        args: [ semaphoreProof?.merkleTreeRoot, semaphoreProof?.signal, semaphoreProof?.nullifierHash, semaphoreProof?.externalNullifier, semaphoreProof?.proof],
         chainId: 420,
         onSuccess(data) {
             console.log('Successful - proof prepare: ', data);
