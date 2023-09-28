@@ -148,7 +148,7 @@ function App() {
                   <li>Wait for Semaphore Identity Generation & Commitment</li>
                   <li>Wait to receive the airdrop</li>
                 </ol> 
-                <button onClick={handleStart}>Get Started</button>
+                <button className='glow-on-hover' onClick={handleStart}>Get Started</button>
               </div>
             }
 
@@ -156,6 +156,7 @@ function App() {
               started && !template && !isConnected &&
               connectors.map((connector) => (
                 <button
+                  className='glow-on-hover'
                   disabled={!connector.ready || isConnected}
                   key={connector.id}
                   onClick={() => connect({ connector })}

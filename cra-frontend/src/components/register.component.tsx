@@ -63,6 +63,7 @@ export function Register({proofObj, userAddr}: {proofObj: Proof, userAddr: strin
             { !contractWrite.isSuccess &&
             <div className='button-container'>
                 <button
+                    className="glow-on-hover"
                     onClick={()=>{ contractWrite.write?.() }}
                     disabled={contractWrite.isLoading || contractWrite.isSuccess || !isPrepared}
                 >

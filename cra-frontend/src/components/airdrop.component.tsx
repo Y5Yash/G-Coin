@@ -85,6 +85,7 @@ export function Airdrop({identity, userAddrSignal, shouldRender}: {identity: Ide
             {!contractWrite.isSuccess && shouldRender &&
                 <div className='button-container'>
                     <button
+                        className="glow-on-hover"
                         onClick={()=>{ contractWrite.write?.() }}
                         disabled={contractWrite.isLoading || contractWrite.isSuccess || !isFullProof}
                     >
